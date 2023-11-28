@@ -28,14 +28,32 @@ function Time() {
   function handlePreviousStep() {
     setStep((s) => s - 1);
   }
+
+  function handleReset() {
+    setStep(1);
+    setCounter(0);
+  }
+
   return (
     <div>
       <div>
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
         <button onClick={handlePreviousStep}>-</button>
         Step: {step}
         <button onClick={handleNextStep}>+</button>
         <br />
         <button onClick={handlePreviousCounter}>-</button>
+        <input
+          type="text"
+          value={counter}
+          onChange={(e) => setCounter(Number(e.target.value))}
+        />
         Counter: {counter}
         <button onClick={handleNextCounter}>+</button>
       </div>
@@ -51,6 +69,11 @@ function Time() {
         </span>
         <span>{date.toDateString()}</span>
       </p>
+      {counter !== 0 || step !== 1 ? (
+        <div>
+          <button onClick={hendleReset}>Reset</button>
+        </div>
+      ) : null}
     </div>
   );
 }
