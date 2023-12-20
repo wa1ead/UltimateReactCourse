@@ -47,16 +47,9 @@ const tempWatchedData = [
   },
 ];
 
-const KEY = "dfdf180e";
-
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   const [watched, setWatched] = useState(tempWatchedData);
-
-  fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=inception
-  `)
-    .then((res) => res.json())
-    .then((data) => console.log(data));
   return (
     <>
       <Navbar>
