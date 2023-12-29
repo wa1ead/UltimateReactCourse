@@ -306,6 +306,22 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatch, watched }) {
 
   useEffect(
     function () {
+      function esc(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+        }
+      }
+      document.addEventListener("keydown", esc);
+
+      return function () {
+        document.removeEventListener("keydown", esc);
+      };
+    },
+    [onCloseMovie]
+  );
+
+  useEffect(
+    function () {
       if (!title) return;
       document.title = `MOVIE | ${title}`;
 
