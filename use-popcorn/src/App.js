@@ -86,6 +86,7 @@ export default function App() {
             `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
             { signal: controller.signal }
           );
+
           if (!res.ok)
             throw new Error("Something went wrong, Try again later!");
 
@@ -112,6 +113,7 @@ export default function App() {
         return;
       }
 
+      handleCloseMovie();
       fetchMovies();
 
       return function () {
