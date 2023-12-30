@@ -4,7 +4,7 @@ export default function App() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [converted, setConverted] = useState("");
-  const [loading, setLoadind] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(
     function () {
