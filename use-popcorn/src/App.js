@@ -9,11 +9,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
-  // const [watched, setWatched] = useState([]);
-  const [watched, setWatched] = useState(function () {
-    const storedValue = localStorage.getItem("watched");
-    return JSON.parse(storedValue);
-  });
+  const [watched, setWatched] = useState([]);
 
   function handleSelectedMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -78,13 +74,6 @@ export default function App() {
       };
     },
     [query]
-  );
-
-  useEffect(
-    function () {
-      localStorage("watched", JSON.stringify(watched));
-    },
-    [watched]
   );
 
   return (
@@ -240,6 +229,15 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatch, watched }) {
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState("");
 
+  const countRef = useRef(0);
+
+  useEffect(
+    function () {
+      if (userRating) countRef.current += 1;
+    },
+    [userRating]
+  );
+
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
 
   const watchedUserRating = watched.find(
@@ -268,6 +266,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatch, watched }) {
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split("").at(0)),
       userRating,
+      countRatingDecisions: countRef.current,
     };
 
     onAddWatch(newWatchedMovie);
