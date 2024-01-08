@@ -60,7 +60,9 @@ class App extends React.Component {
 
       const { latitude, longitude, timezone, name, country_code } =
         geoData.results.at(0);
-      this.setState({ dispaly: `${name} ${convertToFlag(country_code)}` });
+      this.setState({
+        dispalyLocation: `${name} ${convertToFlag(country_code)}`,
+      });
 
       // 2) Getting actual weather
       const weatherRes = await fetch(
@@ -84,7 +86,7 @@ class App extends React.Component {
             type="text"
             placeholder="Search from Location..."
             value={this.state.location}
-            onChange={(e) => this.setStae({ location: e.target.value })}
+            onChange={(e) => this.setState({ location: e.target.value })}
           />
         </div>
         <button onClick={this.fetchWeather}>Get Weather</button>
