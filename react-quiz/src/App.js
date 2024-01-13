@@ -1,13 +1,13 @@
 import Header from "./Header";
-
+import Main from "./Main";
 export default function App() {
   return (
     <div className="app">
       <Header />
-      <main className="main">
+      <Main>
         <p>1/15</p>
         <h2>Question</h2>
-      </main>
+      </Main>
     </div>
   );
 }
