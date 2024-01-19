@@ -52,6 +52,9 @@ function reducer(state, action) {
           state.points > state.highScore ? state.points : state.highScore,
       };
 
+    case "restart":
+      return { ...initialState, questions: state.questions, status: "ready" };
+
     default:
       throw new Error("Action Undefined");
   }
@@ -107,6 +110,7 @@ export default function App() {
             points={points}
             maxPoints={maxPoints}
             highscore={highScore}
+            dispatch={dispatch}
           />
         )}
       </Main>
