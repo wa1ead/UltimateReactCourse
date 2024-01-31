@@ -53,10 +53,10 @@ function CitiesProvider({ children }) {
   // const [currentCity, setCurrentCity] = useState({});
 
   const [{ cities, isLoading, currentCity }, dispatch] = useReducer(
-    initialState,
-    reducer
+    reducer,
+    initialState
   );
-
+  useReducer();
   useEffect(function () {
     async function fetchCities() {
       dispatch({ type: "loading" });
