@@ -42,7 +42,7 @@ function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={(user, isAuthenticated, login, logout)}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -56,3 +56,5 @@ function useAuth() {
 
   return context;
 }
+
+export { AuthProvider, useAuth };
