@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
+import { useUrlPosition } from "../hooks/useUrlPosition";
 import {
   MapContainer,
   TileLayer,
@@ -12,7 +13,6 @@ import {
 } from "react-leaflet";
 import Button from "./Button";
 import styles from "./Map.module.css";
-import { useUrlPosition } from "../hooks/useUrlPosition";
 
 function Map() {
   const { cities } = useCities();
@@ -58,7 +58,7 @@ function Map() {
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
         {cities.map((city) => (
-          <Marker position={mapPosition} key={city.id}>
+          <Marker position={city.position} key={city.id}>
             <Popup>
               <span>{city.emoji}</span>
               <span>{city.cityName}</span>
