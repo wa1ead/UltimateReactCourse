@@ -14,8 +14,12 @@ function App() {
       <GlobalStyles />
       <StyledApp>
         <Heading as="h1">The Wild Oasis</Heading>
-        <Button>Check In</Button>
-        <Button>Check Out</Button>
+        <Button variation="primary" size="large">
+          Check In
+        </Button>
+        <Button variation="secondary" size="medium">
+          Check Out
+        </Button>
         <Heading as="h3">Dashboard</Heading>
       </StyledApp>
     </>
