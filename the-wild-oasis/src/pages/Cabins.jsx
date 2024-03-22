@@ -16,7 +16,9 @@ function Cabins() {
       </Row>
       <Row>
         <CabinTable />
-        <AddCabin />
+        <div>
+          <AddCabin />
+        </div>
       </Row>
     </>
   );
