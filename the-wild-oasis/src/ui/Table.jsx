@@ -73,13 +73,14 @@ function Table({ children, columns }) {
 function Header({ children }) {
   const { columns } = useContext(TableContext);
   return (
-    <StyledHeader role="table" columns={columns}>
+    <StyledHeader role="table" columns={columns} as="header">
       {children}
     </StyledHeader>
   );
 }
-function Body({ children }) {
-  return <StyledBody>{children}</StyledBody>;
+function Body({ data, render }) {
+  if (!data.length) return <Empty>No data to fetch at the moment</Empty>;
+  return <StyledBody>{data.map(render)}</StyledBody>;
 }
 function Row({ children }) {
   const { columns } = useContext(TableContext);
@@ -91,7 +92,7 @@ function Row({ children }) {
 }
 
 Table.Header = Header;
-Table.Bady = Body;
+Table.Body = Body;
 Table.Row = Row;
 Table.Footer = Footer;
 

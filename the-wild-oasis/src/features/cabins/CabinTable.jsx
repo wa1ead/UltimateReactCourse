@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 import { useCabins } from "./useCabins";
 import Table from "../../ui/Table";
 import CabinRow from "./CabinRow";
@@ -42,9 +40,10 @@ function CabinTable() {
         <div>Discount</div>
         <div></div>
       </Table.Header>
-      {cabins.map((cabin) => (
-        <CabinRow cabin={cabin} key={cabin.id} />
-      ))}
+      <Table.Body
+        data={cabins}
+        render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
+      />
     </Table>
   );
 }
