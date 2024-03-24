@@ -79,7 +79,7 @@ function Header({ children }) {
   );
 }
 function Body({ data, render }) {
-  if (!data.length) return <Empty>No data to fetch at the moment</Empty>;
+  if (!data?.length) return <Empty>No data to fetch at the moment</Empty>;
   return <StyledBody>{data.map(render)}</StyledBody>;
 }
 function Row({ children }) {
