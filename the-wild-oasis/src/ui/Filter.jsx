@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useSearchParams } from "react-router-dom";
 import styled, { css } from "styled-components";
 
@@ -37,7 +38,7 @@ const FilterButton = styled.button`
 
 function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  let selectedOption = searchParams.get(filterField) || options.value[0];
+  let selectedOption = searchParams.get(filterField) || options.at(0).value;
   function handleClick(value) {
     searchParams.set(filterField, value);
     setSearchParams(searchParams);
