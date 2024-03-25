@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
 
@@ -76,7 +78,7 @@ function BookingRow({
         </span>
       </Stacked>
 
-      <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
+      <Tag type={statusToTagName[status]}>{status?.replace("-", " ")}</Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
     </Table.Row>
